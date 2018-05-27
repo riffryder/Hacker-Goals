@@ -1,0 +1,8 @@
+## MAC OSX ##
+.DS_Store
+
+## NPM ##
+node_modules
+
+## WEBPACK ##
+react-client/dist/bundle.js
