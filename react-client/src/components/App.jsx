@@ -2,13 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 
 import Goals from './Goals.jsx';
+import Quote from './Quote.jsx'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
-      goals: ['Grocery Shopping', 'Do Laundry', 'Finish MVP']
+      date: new Date().toString(),
+      goals: ['Grocery Shopping', 'Do Laundry', 'Finish MVP'],
     }
   }
 
@@ -34,8 +35,10 @@ class App extends React.Component {
       </div>
       <div>
         <h3>Good Morning Raphael</h3>
+        <h4>{this.state.date}</h4>
       </div>
       <div>
+        <Quote />
       </div>
       <div>
         Title: <input id='title' type='text'></input>
