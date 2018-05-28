@@ -11,13 +11,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.post('/goals', function (req, res) {
-  db.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
+  console.log('SERVER-LOG ', req.body);
+  // res.sendStatus(200);
+  db.saveGoal(req.body)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    res.sendStatus(400);
+  })
+  // db.selectAll(function(err, data) {
+  //   if(err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.json(data);
+  //   }
+  // });
 });
 
 app.listen(3000, function() {
