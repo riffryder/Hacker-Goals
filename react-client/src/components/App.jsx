@@ -12,7 +12,7 @@ class App extends React.Component {
       goals: []
     }
     this.addNewGoal = this.addNewGoal.bind(this);
-    console.log('CURRENT STATE', this.state);
+    // console.log('CURRENT STATE', this.state);
   }
   
   addNewGoal(goal) {
@@ -21,9 +21,9 @@ class App extends React.Component {
     };
 
     $.post('/goals', newGoal)
-    .then(data => {
-      console.log('Success in creating new goal ', data);
-      this.state.goals.push(newGoal);
+    .then(goal => {
+      console.log('Success in creating new goal ', goal);
+      this.state.goals.push(goal);
       this.setState({
         goals: this.state.goals
       })
@@ -33,19 +33,15 @@ class App extends React.Component {
     })
   }
 
-  // componentDidMount() {
-  //   $.ajax({
-  //     url: '/items',
-  //     success: (data) => {
-  //       this.setState({
-  //         items: data
-  //       })d
-  //     },
-  //     error: (err) => {
-  //       console.log('err', err);
-  //     }
-  //   });
-  // }
+  componentDidMount() {
+    $.get('/goals')
+    .then(goals => {
+      // console.log(goals);
+      this.setState({
+        goals: goals
+      })
+    })
+  }
 
   render() {
     return (

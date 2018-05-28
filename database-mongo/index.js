@@ -25,14 +25,16 @@ var saveGoal = (goal) => {
   }).save();
 }
 
-// var selectAll = function(callback) {
-//   Goal.find({}, function(err, goals) {
-//     if(err) {
-//       callback(err, null);
-//     } else {
-//       callback(null, goals);
-//     }
-//   });
-// };
+var selectAll = (callback) => {
+  Goal.find({}, function(err, goals) {
+    if(err) {
+      callback(err, null);
+    } else {
+      callback(null, goals);
+    }
+  });
+};
 
 module.exports.saveGoal = saveGoal;
+
+module.exports.selectAll = selectAll;

@@ -11,23 +11,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.post('/goals', function (req, res) {
-  console.log('SERVER-LOG ', req.body);
-  // res.sendStatus(200);
+  // console.log('SERVER-LOG ', req.body);
   db.saveGoal(req.body)
-  .then(() => {
-    res.sendStatus(200);
+  .then((data) => {
+    // console.log('SUCCESS DATA LOG', data);
+    res.send(data);
   })
   .catch((err) => {
     res.sendStatus(400);
   })
-  // db.selectAll(function(err, data) {
-  //   if(err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.json(data);
-  //   }
-  // });
 });
+
+app.get('/goals', function(req, res) {
+  db.selectAll((err, data) => {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      // console.log('THIS IS THE DATA ', data);
+      res.send(data);
+    }
+  });
+})
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');
