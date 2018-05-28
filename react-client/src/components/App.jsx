@@ -11,10 +11,26 @@ class App extends React.Component {
       date: new Date().toString(),
       goals: []
     }
+    this.addNewGoal = this.addNewGoal.bind(this);
   }
   
   addNewGoal(goal) {
+    var newGoal = {
+      title: goal
+    };
+    this.state.goals.push(newGoal);
+    this.setState({
+      goals: this.state.goals
+    })
+
     console.log(`${goal} was added`);
+    $.post('/goals', newGoal)
+    .then(data => {
+      console.log('Success in creating new goal ', data);
+    })
+    .catch(err => {
+      console.log('Unable to add goal to list ', err);
+    })
   }
 
   // componentDidMount() {
