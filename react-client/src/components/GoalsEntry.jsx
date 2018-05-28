@@ -2,7 +2,7 @@ import React from 'react';
 
 const GoalsEntry = (props) => (
   <div>
-    {props.goal}
+    {props.goal.title}
   </div>
 )
 

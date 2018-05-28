@@ -9,8 +9,19 @@ class App extends React.Component {
     super(props);
     this.state = {
       date: new Date().toString(),
-      goals: ['Grocery Shopping', 'Do Laundry', 'Finish MVP'],
+      goals: []
     }
+    this.addNewGoal = this.addNewGoal.bind(this);
+  }
+
+  addNewGoal(event) {
+    var newGoal = {
+      title: event.target.value
+    };
+    this.state.goals.push(newGoal);
+    this.setState({
+      goals: this.state.goals
+    })
   }
 
   // componentDidMount() {
@@ -19,7 +30,7 @@ class App extends React.Component {
   //     success: (data) => {
   //       this.setState({
   //         items: data
-  //       })
+  //       })d
   //     },
   //     error: (err) => {
   //       console.log('err', err);
@@ -30,20 +41,17 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <div>
+      <div className='title'>
         <h1>Hacker Goals</h1>
       </div>
-      <div>
+      <div className='greeting'>
         <h3>Good Morning Raphael</h3>
         <h4>{this.state.date}</h4>
       </div>
-      <div>
-        <Quote />
-      </div>
-      <div>
-        Title: <input id='title' type='text'></input>
-        Description: <input id='description' type='text'></input>
-        <span>
+      <Quote />
+      <div className='goal-input'>
+        Goal: <input name='title' type='text' onBlur={this.addNewGoal}></input>
+        <span className='add'>
           <button>Add New Goal</button>
         </span>
       </div>
