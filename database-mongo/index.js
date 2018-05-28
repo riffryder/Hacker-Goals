@@ -18,14 +18,21 @@ var goalSchema = mongoose.Schema({
 
 var Goal = mongoose.model('Goal', goalSchema);
 
-var selectAll = function(callback) {
-  Goal.find({}, function(err, goals) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, goals);
-    }
-  });
-};
+var saveGoal = (goal) => {
+  return new Goal({
+    title: goal.title,
+    entry: ''
+  }).save();
+}
 
-module.exports.selectAll = selectAll;
+// var selectAll = function(callback) {
+//   Goal.find({}, function(err, goals) {
+//     if(err) {
+//       callback(err, null);
+//     } else {
+//       callback(null, goals);
+//     }
+//   });
+// };
+
+module.exports.saveGoal = saveGoal;
