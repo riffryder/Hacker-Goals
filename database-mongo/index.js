@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/hrgoals');
 
 var db = mongoose.connection;
 
@@ -11,19 +11,19 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var goalSchema = mongoose.Schema({
+  title: String,
+  entry: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Goal = mongoose.model('Goal', goalSchema);
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Goal.find({}, function(err, goals) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, goals);
     }
   });
 };
