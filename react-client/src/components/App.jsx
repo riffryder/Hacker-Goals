@@ -11,17 +11,10 @@ class App extends React.Component {
       date: new Date().toString(),
       goals: []
     }
-    this.addNewGoal = this.addNewGoal.bind(this);
   }
-
-  addNewGoal(event) {
-    var newGoal = {
-      title: event.target.value
-    };
-    this.state.goals.push(newGoal);
-    this.setState({
-      goals: this.state.goals
-    })
+  
+  addNewGoal(goal) {
+    console.log(`${goal} was added`);
   }
 
   // componentDidMount() {
@@ -49,13 +42,7 @@ class App extends React.Component {
         <h4>{this.state.date}</h4>
       </div>
       <Quote />
-      <div className='goal-input'>
-        Goal: <input name='title' type='text' onBlur={this.addNewGoal}></input>
-        <span className='add'>
-          <button>Add New Goal</button>
-        </span>
-      </div>
-      <Goals goals={this.state.goals} />
+      <Goals addNewGoal={this.addNewGoal} goals={this.state.goals} />
     </div>
     )
   }
