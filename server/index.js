@@ -1,20 +1,20 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-var db = require('../database-mongo');
-var pq = require('../helpers/paperquotes.js')
+const db = require('../database-mongo');
+const pq = require('../helpers/paperquotes.js')
 
-var app = express();
+const app = express();
+
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.post('/goals', function (req, res) {
-  // console.log('SERVER-LOG ', req.body);
   db.saveGoal(req.body)
   .then((data) => {
-    // console.log('SUCCESS DATA LOG', data);
     res.send(data);
   })
   .catch((err) => {
@@ -27,7 +27,6 @@ app.get('/goals', function(req, res) {
     if(err) {
       res.sendStatus(500);
     } else {
-      // console.log('THIS IS THE DATA ', data);
       res.send(data);
     }
   });
@@ -44,7 +43,7 @@ app.get('/quote', function(req, res) {
   })
 })
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log('listening on port 3000!');
 });
 

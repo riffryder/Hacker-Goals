@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/hrgoals');
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -11,21 +11,21 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var goalSchema = mongoose.Schema({
+const goalSchema = mongoose.Schema({
   title: String,
   entry: String
 });
 
-var Goal = mongoose.model('Goal', goalSchema);
+const Goal = mongoose.model('Goal', goalSchema);
 
-var saveGoal = (goal) => {
+const saveGoal = (goal) => {
   return new Goal({
     title: goal.title,
     entry: ''
   }).save();
 }
 
-var selectAll = (callback) => {
+const selectAll = (callback) => {
   Goal.find({}, function(err, goals) {
     if(err) {
       callback(err, null);

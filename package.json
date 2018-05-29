@@ -1,14 +1,18 @@
 {
-  "name": "github-fetcher-fullstack-v2",
+  "name": "hacker-goals",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
-  "author": "Beth Johnson",
-  "license": "ISC",
+  "author": "Raphael Croce",
+  "license": "",
+  "engines": {
+    "node": "10.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
