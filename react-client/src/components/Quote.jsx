@@ -14,12 +14,12 @@ class Quote extends React.Component {
   componentDidMount() {
     $.get('/quote')
     .then((quotesArr) => {
-      console.log(quotesArr);
+      // console.log(quotesArr);
       this.setState({
         quotes: quotesArr
       })
       this.selectRandomQuote(this.state.quotes);
-      console.log('CURRENT STATE', this.state);
+      // console.log('CURRENT STATE', this.state);
     })
   }
 
@@ -27,7 +27,7 @@ class Quote extends React.Component {
     var quotesArrLength = this.state.quotes.length;
     var randomIndex = Math.ceil(Math.random() * (quotesArrLength - 1));
     var splitQuote = quotesArr[randomIndex].quote.split('\n')[0];
-    console.log(quotesArr[randomIndex]);
+    // console.log(quotesArr[randomIndex]);
     this.setState({
       quote: splitQuote,
       author: quotesArr[randomIndex].author
