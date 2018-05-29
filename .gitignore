@@ -6,3 +6,6 @@ node_modules
 
 ## WEBPACK ##
 react-client/dist/bundle.js
+
+## API ##
+config.js
