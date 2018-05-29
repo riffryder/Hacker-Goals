@@ -2,9 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var db = require('../database-mongo');
+var pq = require('../helpers/paperquotes.js')
 
 var app = express();
-
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
@@ -31,6 +31,17 @@ app.get('/goals', function(req, res) {
       res.send(data);
     }
   });
+})
+
+app.get('/quote', function(req, res) {
+  pq.getQuotes((err, quotes) => {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      var quotesObj = JSON.parse(quotes)
+      res.send(quotesObj.results);
+    }
+  })
 })
 
 app.listen(3000, function() {
