@@ -3,9 +3,13 @@
 
 ## NPM ##
 node_modules
+npm-debug.log
 
 ## WEBPACK ##
 react-client/dist/bundle.js
 
 ## API ##
 config.js
+
+## HEROKU ##
+/*.env
