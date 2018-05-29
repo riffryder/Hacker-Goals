@@ -2,7 +2,9 @@ import React from 'react';
 
 const GoalsEntry = (props) => (
   <div>
-    {props.goal.title}
+    <ul>
+      <li><span>{props.goal.title}</span><input type="checkbox" /></li>
+    </ul>
   </div>
 )
 
