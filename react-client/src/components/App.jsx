@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date().toString(),
+      greeting: '',
+      date: new Date().toDateString(),
       goals: []
     }
     this.addNewGoal = this.addNewGoal.bind(this);
@@ -41,6 +42,22 @@ class App extends React.Component {
         goals: goals
       })
     })
+    this.greeting();
+  }
+
+  greeting() {
+    var currentTime = new Date().getHours();
+    var currentGreeting;
+    if (currentTime >= 0 && currentTime < 12) {
+      currentGreeting = 'Good Morning ';
+    } else if (currentTime >= 12 && currentTime < 17) {
+      currentGreeting = 'Good Afternoon ';
+    } else {
+      currentGreeting = 'Good Evening';
+    }
+    this.setState({
+      greeting: currentGreeting
+    });
   }
 
   render() {
@@ -50,7 +67,7 @@ class App extends React.Component {
         <h1>Hacker Goals</h1>
       </div>
       <div className='greeting'>
-        <h3>Good Morning Raphael</h3>
+        <h3>{this.state.greeting} Raphael</h3>
         <h4>{this.state.date}</h4>
       </div>
       <Quote />
