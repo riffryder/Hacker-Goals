@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "server-dev": "nodemon server/index.js"
   },
   "author": "Raphael Croce",
   "license": "",
