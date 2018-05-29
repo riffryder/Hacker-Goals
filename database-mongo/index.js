@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/hrgoals');
+require('dotenv').config();
+
+mongoose.connect(process.env.MONMONGODB_URI);
 
 const db = mongoose.connection;
 
