@@ -1,6 +1,17 @@
 import React from 'react';
 import $ from 'jquery';
 
+const quoteDiv = {
+  textAlign: 'center',
+  backgroundColor: 'white',
+  fontStyle: 'italic',
+  border: '2px solid black',
+  padding: '15px',
+  marginBottom: '20px',
+  font: 'Cambria',
+  fontSize: '17px'
+}
+
 class Quote extends React.Component {
   constructor(props) {
     super(props);
@@ -37,12 +48,10 @@ class Quote extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          {this.state.quote}
+        <div style={quoteDiv}>
+          {this.state.quote}<br />
+          <span>{'-' + this.state.author}</span>
         </div>
-        <span>
-          {this.state.author}
-        </span>
       </div>
     )
   }

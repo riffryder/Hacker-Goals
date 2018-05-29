@@ -1,8 +1,21 @@
 import React from 'react';
 import $ from 'jquery';
+// import styled from 'styled-components';
 
 import Goals from './Goals.jsx';
 import Quote from './Quote.jsx'
+
+const mainTitleDiv = {
+  textAlign: 'center',
+  backgroundColor: '#2b9fda',
+  margin: '0'
+};
+
+const title = {
+  margin: '0',
+  fontSize: '40px',
+  fontFamily: '"adelle", "Cambria", "Lucida Bright", "Georgia", serif'
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -63,10 +76,10 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <div className='title'>
-        <h1>Hacker Goals</h1>
+      <div style={mainTitleDiv}>
+        <h1 style={title}>Hacker Goals</h1>
       </div>
-      <div className='greeting'>
+      <div>
         <h3>{this.state.greeting} Raphael</h3>
         <h4>{this.state.date}</h4>
       </div>

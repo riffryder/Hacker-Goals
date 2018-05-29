@@ -1,6 +1,16 @@
 import React from 'react';
 import GoalsEntry from './GoalsEntry.jsx';
 
+const mainGoalsDiv = {
+  fontFamily: '"adelle", "Cambria", "Lucida Bright", "Georgia", serif',
+  margin: '10px',
+  fontSize: '20px'
+};
+
+const addButton = {
+  margin: '10px'
+}
+
 class Goals extends React.Component {
   constructor(props) {
     super(props);
@@ -23,12 +33,12 @@ class Goals extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={mainGoalsDiv}>
         Goal: <input value={this.state.goal} onChange={this.onChange}></input>
         <span className='add'>
-          <button onClick={this.addNewGoal}>Add New Goal</button>
+          <button style={addButton} onClick={this.addNewGoal}>Add</button>
         </span>
-        <div>
+        <div style={mainGoalsDiv}>
           You have {this.props.goals.length} goals this week.
           {this.props.goals.map(goal => <GoalsEntry goal={goal}/>)}
         </div>
