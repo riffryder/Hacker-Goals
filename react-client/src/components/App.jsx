@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 // import styled from 'styled-components';
+import styles from '../styles.css'
 
 import Goals from './Goals.jsx';
 import Quote from './Quote.jsx'
@@ -36,10 +37,25 @@ class App extends React.Component {
 
     $.post('/goals', newGoal)
     .then(goal => {
-      console.log('Success in creating new goal ', goal);
-      this.state.goals.push(goal);
+      // console.log('Success in creating new goal ', goal);
+      // this.state.goals.push(goal);
+      // this.setState({
+      //   goals: this.state.goals
+      // })
+      return $.get('/goals')
+        .then(goals => {
+          // console.log(goals);
+          this.setState({
+            goals: goals
+          })
+        })
+    })
+    .then(goal => {
+            // console.log('Success in creating new goal ', goal);
+      const goalsCopy = this.state.goals.slice(0)
+      goalsCopy.push(goal)
       this.setState({
-        goals: this.state.goals
+        goals: goalsCopy
       })
     })
     .catch(err => {
@@ -76,7 +92,7 @@ class App extends React.Component {
   render() {
     return (
     <div>
-      <div style={mainTitleDiv}>
+      <div className="title">
         <h1 style={title}>Hacker Goals</h1>
       </div>
       <div>
